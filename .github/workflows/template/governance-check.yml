@@ -1,0 +1,25 @@
+name: Governance Files Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  required-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify required governance files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f LICENSE
+          test -f GOVERNANCE.md
+          test -f SECURITY.md
+          test -f MAINTAINERS.md
+          test -f CODE_OF_CONDUCT.md
+          test -f .reuse/dep5
+          test -f LICENSES/Apache-2.0.txt
