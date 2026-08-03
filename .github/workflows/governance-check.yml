@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-
       - name: Verify required governance files
         shell: bash
         run: |
@@ -30,3 +29,12 @@ jobs:
           test -f CODE_OF_CONDUCT.md
           test -f .reuse/dep5
           test -f LICENSES/Apache-2.0.txt
+
+  actionlint:
+    name: Validate workflow templates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Run actionlint
+        uses: reviewdog/action-actionlint@6fb7acc99f4a1008869fa8a0f09cfca740837d9d # v1.72.0
