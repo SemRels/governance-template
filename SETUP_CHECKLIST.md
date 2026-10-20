@@ -8,5 +8,6 @@
 6. Copy one or more workflow examples from `.github/workflows/template/` into `.github/workflows/` if the target repository should enforce them.
 7. If the repository contains nested projects such as `api/`, decide whether they inherit root governance or require a local override file.
 8. Commit the changes on `chore/add-governance` and open a PR.
-9. Run the repository's existing validation commands.
-10. Enable GitHub Security Advisories if they are not already enabled.
+9. For plugin repositories, verify `SEMREL_DRY_RUN=true` conformance (`plugin_schema_version=1` + human-readable logs on `stderr`, diffs/content/payloads on `stdout`, fail-soft on missing credentials, and no file/git/network side effects).
+10. Run the repository's existing validation commands.
+11. Enable GitHub Security Advisories if they are not already enabled.
